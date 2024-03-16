@@ -370,7 +370,8 @@ public:
     PlayerInventory* getSupplies()
     {
         uintptr_t address = reinterpret_cast<uintptr_t>(this);
-        return *reinterpret_cast<PlayerInventory**>(address + 0x7E8); // Updated to 1.20.51
+        return *reinterpret_cast<PlayerInventory**>(address + 0x7B0); // Updated to 1.20.71 (Player::getSupplies offset) mov     rax, [rcx+7B0h]
+
         // 0x848 1.20.0.1
     }
     RenderPositionComponent* getRenderPositionComponent() {
@@ -407,7 +408,7 @@ public:
     GameMode* getGameMode()
     {
         uintptr_t address = reinterpret_cast<uintptr_t>(this);
-        return *reinterpret_cast<GameMode**>(address + 0xF10); // Updated to 1.20.51
+        return *reinterpret_cast<GameMode**>(address + 0xED8); // Updated to 1.20.71 (Player::getGamemode) mov     rax, [rcx+0ED8h]
         // 0xEF8 1.20.0.1
     }
 
@@ -563,7 +564,7 @@ public:
         if (IsBadReadPtr(this, sizeof(Player)))
             return nullptr;
 
-        uintptr_t ptr = (uintptr_t)this + 0x2C8; // Updated to 1.20.51
+        uintptr_t ptr = (uintptr_t)this + 0x298; // Updated to 1.20.71 (Actor::getPosition) mov     rax, [rcx+298h]
 
         if (ptr >= range_start || ptr <= 0x1000)
             return nullptr;
@@ -575,12 +576,12 @@ public:
 
         if (std::is_same<T, AABBShapeComponent>::value)
         {
-            return *reinterpret_cast<T**>((uintptr_t)this + 0x2D0); // Updated to 1.20.51
+            return *reinterpret_cast<T**>((uintptr_t)this + 0x2A0); // Updated to 1.20.71 (Actor::getaabb) mov     rax, [rcx+2A0h]
         }
 
         if (std::is_same<T, MovementInterpolatorComponent>::value)
         {
-            return *reinterpret_cast<T**>(ptr + 16);
+            return *reinterpret_cast<T**>(ptr + 16); // statevector + 16
         }
 
         EntityContext* ctx = GetEntityContext();
@@ -597,14 +598,14 @@ public:
     EntityContext* GetEntityContext()
     {
         uintptr_t address = reinterpret_cast<uintptr_t>(this);
-        return reinterpret_cast<EntityContext*>((uintptr_t)this + 0x8); // Updated to 1.20.51
+        return reinterpret_cast<EntityContext*>((uintptr_t)this + 0x8); // Updated to 1.20.71 (never changes)
         // The same offset in 1.20.0.1
     }
 
     Level* GetLevel()
     {
         uintptr_t address = reinterpret_cast<uintptr_t>(this);
-        return *reinterpret_cast<Level**>(address + 0x288); // Updated to 1.20.51
+        return *reinterpret_cast<Level**>(address + 0x258); // Updated to 1.20.71 (actor::getlevel NOT IN THE IDA DB, Use discord bot)
         // 0x260 in 1.20.0.1
     }
 

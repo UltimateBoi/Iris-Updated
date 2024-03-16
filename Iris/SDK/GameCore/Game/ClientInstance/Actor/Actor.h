@@ -528,7 +528,7 @@ public:
     }
 
     /*
-    
+
     std::string getNameTag()
     {
         if (!this || IsBadPtr())

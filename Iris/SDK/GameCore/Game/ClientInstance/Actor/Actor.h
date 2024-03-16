@@ -725,11 +725,11 @@ public:
         return VTable[index];
     }
 public:
-    BUILD_ACCESS(this, struct EntityContext, entityContext, 0x8); // Updated to 1.20.51
-    BUILD_ACCESS(this, class EntityLocation*, location, 0x2A0); // Updated to 1.20.51
-    BUILD_ACCESS(this, StateVectorComponent*, stateVector, 0x2C8); // Updated to 1.20.51
-    BUILD_ACCESS(this, AABBShapeComponent*, aabbShape, 0x2D0); // Updated to 1.20.51
-    BUILD_ACCESS(this, MovementInterpolatorComponent*, moveInterpolator, 0x2C8 + 16); // Updated to 1.20.51
+    BUILD_ACCESS(this, struct EntityContext, entityContext, 0x8); // Updated to 1.20.71 (stayed same)
+    BUILD_ACCESS(this, class EntityLocation*, location, 0x2A0); // Updated to 1.20.71 (stayed same)
+    BUILD_ACCESS(this, StateVectorComponent*, stateVector, 0x298); // Updated to 1.20.71 (same as try_get)
+    BUILD_ACCESS(this, AABBShapeComponent*, aabbShape, 0x2A0); // Updated to 1.20.71 (same as AABBShapeComponent)
+    BUILD_ACCESS(this, MovementInterpolatorComponent*, moveInterpolator, 0x298 + 16); // Updated to 1.20.71 (same as MovementInterpolatorComponent)
 };
 
 static std::map<__int32, uintptr_t> __o__entitylist = std::map<__int32, uintptr_t>();

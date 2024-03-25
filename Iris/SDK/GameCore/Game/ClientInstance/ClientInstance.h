@@ -6,7 +6,7 @@
 #include "LevelRender.h"
 #include "../../Struct/GLMatrix.h"
 
-#define getLocalPlayerIndex 28 // Updated to 1.20.51
+#define getLocalPlayerIndex 29 // Updated to 1.20.71 (variable.player_x_rotation string, 1 xref a3 then divide that number by 8 e.g 232 / 8 for this)
 
 class ClientInstance
 {
@@ -75,7 +75,7 @@ public:
 	LevelRender* getLevelRender()
 	{
 		uintptr_t address = reinterpret_cast<uintptr_t>(this);
-		return *reinterpret_cast<LevelRender**>(address + 0xE0); // Updated to 1.20.51
+		return *reinterpret_cast<LevelRender**>(address + 0xCB); // Updated to 1.20.71 (string player_x )
 		// The same offset on 1.20.0.1
 	}
 
@@ -160,7 +160,7 @@ public:
 	BUILD_ACCESS(this, class LoopbackPacketSender*, LoopbackPacketSender, 0xF0); // Updated to 1.20.51
 	BUILD_ACCESS(this, class MinecraftGame*, MinecraftGame, 0xC8); // Updated to 1.20.51
 	BUILD_ACCESS(this, class Minecraft*, Minecraft, 0xD0); // Updated to 1.20.51
-	BUILD_ACCESS(this, class GuiData*, GuiData, 0x558); // Updated to 1.20.71 (ui_invert_overlay string, xref 2 times from top)
+	BUILD_ACCESS(this, class GuiData*, GuiData, 0x558); // Updated to 1.20.71 (ui_invert_overlay string, xref 2 times from top)a
 
 	BUILD_ACCESS(this, class LevelRenderer*, levelRenderer, 0xE0); // Updated to 1.20.51
 public:

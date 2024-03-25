@@ -152,8 +152,8 @@ void getEntities(std::function<void(Player*)> callback)
             return true;
         };
 
-        CallVFunc<305, decltype(listOut)*>(Game::GetLocalPlayer()->GetLevel(), &listOut);  // Level::getRuntimeActorList
-        CallVFunc<214, void>(Game::GetLocalPlayer()->GetLevel(), &functor); // Level::forEachPlayer
+        CallVFunc<289, decltype(listOut)*>(Game::GetLocalPlayer()->GetLevel(), &listOut);  // Level::getRuntimeActorList (Updated to 1.20.71)
+        CallVFunc<203, void>(Game::GetLocalPlayer()->GetLevel(), &functor); // Level::forEachPlayer (Updated to 1.20.71)
 
         for (auto actor : listOut)
         {
